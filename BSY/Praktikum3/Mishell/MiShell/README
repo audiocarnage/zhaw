@@ -1,0 +1,13 @@
+Testen der Umletung (redirection):
+
+1. Ausgabe in Datei, z.B. 
+
+    "ls -al > tmp.txt"
+
+    "cat tmp.txt" sollte das Gleiche geben wie "ls -al"
+
+2. Einlesen aus Datei, z.B.
+
+    "grep < tmp.txt readline"
+
+    sollte das Gleiche geben wie "ls -al | grep readline"

@@ -1,0 +1,18 @@
+Aufgabe 1: 
+----------
+Korrekt. 
+
+
+Aufgabe 2:
+----------
+Alles korrekt, sauber und ausführlich.
+
+Aufgabe 3:
+----------
+Korrekt. Es empfiehlt sich, die einzelnen Funktionen als separate Funktionen zu implementieren.
+
+ 
+Gesamtbewertung:
+---------------
+
+Sehr gut, also insgesamt 1+3=4 Punkte. 

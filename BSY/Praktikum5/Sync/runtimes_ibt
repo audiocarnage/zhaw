@@ -1,0 +1,17 @@
+runtimes:
+
+Running 1 threads
+Balance of accounts is: 1006995400
+Balance of accounts is: 1006995400 ... correct
+Run time 7.41s
+
+Running 2 threads
+Balance of accounts is: 1006995400
+Balance of accounts is: 1006995400 ... correct
+Run time 4.10s
+
+Running 4 threads
+Balance of accounts is: 1006995400
+Balance of accounts is: 1006995400 ... correct
+Run time 3.95s
+

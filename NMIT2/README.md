@@ -1,2 +1,2 @@
 # NMIT2
-Numerik 2 Vorlesung ZHAW
+Vorlesung Numerik 2 für Informatiker an der ZHAW, Herbstsemester 2015

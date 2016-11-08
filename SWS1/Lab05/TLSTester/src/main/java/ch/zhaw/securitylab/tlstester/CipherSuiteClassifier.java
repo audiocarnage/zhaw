@@ -9,7 +9,7 @@ package ch.zhaw.securitylab.tlstester;
  * • MD5 should be considered as an insecure hash function.
  * 
  * @author Rémi Georgiou
- * @vesion 1.0, November 2016
+ * @version 1.0, November 2016
  */
 public class CipherSuiteClassifier {
     private final int SECURE_SECRET_KEY_LENGTH = 128;

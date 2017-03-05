@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <title>Marketplace</title>
+        <h:outputStylesheet library="css" name="marketplace.css" />
+    </h:head>
+
+    <h:body>
+        <div id="header">
+            <h1>Welcome to Marketplace v01</h1>
+            <h:messages globalOnly="true" layout="table" infoClass="redItalicText"/>
+        </div>
+
+        <div id="productSearch">
+            <p>To search for products, enter any search string below and click
+                the Search button.</p>
+            <h:panelGrid columns="2">
+                <h:form>
+                    <h:inputText value="#{searchBacking.searchString}" />
+                    <h:commandButton value="Search"
+                                     action="#{searchBacking.search}" />
+                </h:form>
+            </h:panelGrid>
+        </div>
+
+        <div id="productList">
+            <p>
+                Search results for: <span class="boldText"><h:outputText
+                        value="#{searchBacking.searchString}" escape="false" /></span>
+            </p>
+            <p>
+                <h:outputText value="No products match your search"
+                              rendered="#{searchBacking.count == 0}" />
+            </p>
+            <h:dataTable value="#{searchBacking.products}" var="product"
+                         rendered="#{searchBacking.count != 0}" styleClass="list"
+                         rowClasses="odd,even" columnClasses="text,price,link">
+                <h:column>
+                    <f:facet name="header">Description</f:facet>
+                        #{product.description}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Price (CHF)</f:facet>
+                    <h:outputText value="#{product.price}">
+                        <f:convertNumber pattern="#0.00" />
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <h:form>
+                        <h:commandButton value="Add to cart"
+                                         action="#{cartBacking.addProduct(product)}"  />
+                    </h:form>
+                </h:column>
+            </h:dataTable>
+        </div>
+
+        <div id="navigation">
+            <h:panelGrid columns="2">
+                <h:button value="Show cart" outcome="/view/public/cart" />
+                <h:button value="Checkout" 
+                          outcome="/view/public/checkout" />
+            </h:panelGrid>
+        </div>
+    </h:body>
+</html>

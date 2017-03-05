@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <title>Marketplace</title>
+        <h:outputStylesheet library="css" name="marketplace.css" />
+    </h:head>
+
+    <h:body>
+
+        <div id="header">
+            <h1>Admin Area</h1>
+            <h:messages globalOnly="true" layout="table" infoClass="redItalicText" />
+        </div>
+
+        <h:panelGroup layout="block" rendered="#{request.isUserInRole('marketing') or 
+                                                 request.isUserInRole('sales')}">
+            <p>
+                <h:outputText value="No purchases available."
+                              rendered="#{adminPurchaseBacking.count == 0}" />
+                <h:outputText value="Purchases:"
+                              rendered="#{adminProductBacking.count != 0}" />
+            </p>
+
+            <h:dataTable value="#{adminPurchaseBacking.purchases}" var="purchase"
+                         rendered="#{adminPurchaseBacking.count != 0}" styleClass="list"
+                         rowClasses="odd,even" columnClasses="text,text,text,price">
+                <h:column>
+                    <f:facet name="header">First Name</f:facet>
+                        #{purchase.firstname}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Last Name</f:facet>
+                        #{purchase.lastname}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Credit Card Number</f:facet>
+                        #{purchase.creditCardNumber}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Total Price (CHF)</f:facet>
+                    <h:outputText value="#{purchase.totalPrice}">
+                        <f:convertNumber pattern="#0.00" />
+                    </h:outputText>
+                </h:column>
+                <h:column rendered="#{request.isUserInRole('sales')}">
+                    <h:form>
+                        <h:commandButton value="Remove purchase"
+                                         action="#{adminPurchaseBacking.remove(purchase)}" />
+                    </h:form>
+                </h:column>
+            </h:dataTable>
+        </h:panelGroup>
+
+        <!-- Insert view for productmanager -->
+        <h:panelGroup layout="block" rendered="#{request.isUserInRole('productmanager')}">
+            <p>
+                <h:outputText value="No products available."
+                              rendered="#{adminProductBacking.count == 0}" />
+                <h:outputText value="Products"
+                              rendered="#{adminProductBacking.count != 0}" />
+            </p>
+
+            <h:dataTable value="#{adminProductBacking.products}" var="product"
+                         rendered="#{adminProductBacking.count != 0}" styleClass="list"
+                         rowClasses="odd,even" columnClasses="text,text,price,text">
+                <h:column>
+                    <f:facet name="header">Code</f:facet>
+                        #{product.code}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Description</f:facet>
+                        #{product.description}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Price (CHF)</f:facet>
+                    <h:outputText value="#{product.price}">
+                        <f:convertNumber pattern="#0.00" />
+                    </h:outputText>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Username</f:facet>
+                        #{product.username}
+                </h:column>
+                <h:column rendered="#{request.isUserInRole('productmanager')}">
+                    <h:form>
+                        <h:commandButton value="Remove product" 
+                                         rendered="#{request.getRemoteUser() == product.username}"
+                                         action="#{adminProductBacking.remove(product)}" />
+                    </h:form>
+                </h:column>
+            </h:dataTable>
+        </h:panelGroup>
+        
+
+        <h:panelGroup rendered="#{!request.isUserInRole('manager') and 
+                                  !request.isUserInRole('sales') and 
+                                  !request.isUserInRole('productmanager')}">
+            <p>
+                <h:outputText value="Your role does not provide access to special functions in the admin area." />
+            </p>
+        </h:panelGroup>
+
+        <div id="navigation">
+            <h:panelGrid columns="4">
+                <h:button value="Return to search page" outcome="/view/public/search" />
+                <h:button value="Add product" rendered="#{request.isUserInRole('productmanager')}" outcome="/view/admin/product/addproduct" />
+                <h:button value="Account settings" outcome="/view/admin/account/accountsettings" />
+                <h:form>
+                    <h:commandButton value="Logout"
+                                     action="#{authenticationBacking.logout}" />
+                </h:form>
+            </h:panelGrid>
+        </div>
+    </h:body>
+</html>

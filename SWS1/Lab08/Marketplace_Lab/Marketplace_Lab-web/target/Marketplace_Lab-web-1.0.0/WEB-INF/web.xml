@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+         xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
+         id="WebApp_ID" version="3.1">
+    <servlet>
+        <servlet-name>Faces Servlet</servlet-name>
+        <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>Faces Servlet</servlet-name>
+        <url-pattern>/faces/*</url-pattern>
+    </servlet-mapping>
+    <context-param>
+        <param-name>javax.faces.PROJECT_STAGE</param-name>
+        <param-value>Production</param-value>
+    </context-param>
+    <session-config>
+        <session-timeout>10</session-timeout>
+        <cookie-config>
+            <http-only>true</http-only>
+        </cookie-config>
+        <tracking-mode>COOKIE</tracking-mode>
+    </session-config>
+    <welcome-file-list>
+        <welcome-file>faces/view/public/search.xhtml</welcome-file>
+    </welcome-file-list>
+    <!--<error-page>
+        <error-code>404</error-code>
+        <location>/faces/view/public/error.xhtml</location>
+    </error-page>
+    <error-page>
+        <exception-type>java.lang.Exception</exception-type>
+        <location>/faces/view/public/error.xhtml</location>
+    </error-page>-->
+    <security-role>
+        <description>Sales Personnel</description>
+        <role-name>sales</role-name>
+    </security-role>
+    <security-role>
+        <description>Marketing Personnel</description>
+        <role-name>marketing</role-name>
+    </security-role>
+    
+    <security-role>
+        <description>Product Management Personnel</description>
+        <role-name>productmanager</role-name>
+    </security-role>
+    
+    <security-role>
+        <description>Burgerman Personnel</description>
+        <role-name>burgerman</role-name>
+    </security-role>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Admin Area</web-resource-name>
+            <url-pattern>/faces/view/admin/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>sales</role-name>
+            <role-name>marketing</role-name>
+            <role-name>productmanager</role-name>
+            <role-name>burgerman</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Product Manager Area</web-resource-name>
+            <url-pattern>/faces/view/admin/product/*</url-pattern>
+        </web-resource-collection>
+        <auth-constraint>
+            <role-name>productmanager</role-name>
+        </auth-constraint>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Secure Public Area</web-resource-name>
+            <url-pattern>/faces/view/public/secure/*</url-pattern>
+        </web-resource-collection>
+        <user-data-constraint>
+            <transport-guarantee>CONFIDENTIAL</transport-guarantee>
+        </user-data-constraint>
+    </security-constraint>
+    <security-constraint>
+        <web-resource-collection>
+            <web-resource-name>Restricted Methods</web-resource-name>
+            <url-pattern>/*</url-pattern>
+            <url-pattern>/faces/view/admin/*</url-pattern>
+            <url-pattern>/faces/view/public/secure/*</url-pattern>
+            <url-pattern>/faces/view/product/*</url-pattern>
+            <http-method-omission>GET</http-method-omission>
+            <http-method-omission>POST</http-method-omission>
+        </web-resource-collection>
+        <auth-constraint />
+    </security-constraint>
+    <!--<login-config>
+        <auth-method>BASIC</auth-method>
+        <realm-name>marketplace-web-realm</realm-name>
+    </login-config>-->
+    <login-config>
+        <auth-method>FORM</auth-method>
+        <realm-name>marketplace-web-realm</realm-name>
+        <form-login-config>
+            <form-login-page>/faces/view/public/secure/login.xhtml</form-login-page>
+            <form-error-page>/faces/view/public/secure/login.xhtml</form-error-page>
+        </form-login-config>
+    </login-config>
+</web-app>

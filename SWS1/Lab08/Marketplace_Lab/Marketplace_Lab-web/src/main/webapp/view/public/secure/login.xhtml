@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <title>Marketplace</title>
+        <h:outputStylesheet library="css" name="marketplace.css" />
+    </h:head>
+    
+    <h:body>
+        <div id="header">
+            <h1>Login</h1>
+            <h:messages globalOnly="true" layout="table" infoClass="redItalicText"/>
+        </div>
+
+        <div id="loginForm">
+            <p>Please log in to continue.</p>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="Username:" />
+                    <h:inputText value="#{authenticationBacking.username}" />
+                    <h:outputLabel value="Password:" />
+                    <h:inputSecret value="#{authenticationBacking.password}" />
+                    <h:outputText value="" />
+                    <h:panelGrid columns="2">
+                        <h:commandButton value="Login" action="#{authenticationBacking.login}" />
+                        <h:button value="Cancel" outcome="/view/public/search" />
+                    </h:panelGrid>
+                </h:panelGrid>
+            </h:form>
+        </div>
+
+    </h:body>
+</html>
+

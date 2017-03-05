@@ -1,0 +1,10 @@
+ch/zhaw/securitylab/marketplace/rest/ApplicationConfig.class
+ch/zhaw/securitylab/marketplace/rest/CustomExceptionMapper.class
+ch/zhaw/securitylab/marketplace/rest/PurchaseRest.class
+ch/zhaw/securitylab/marketplace/rest/ConstraintViolationExceptionMapper.class
+ch/zhaw/securitylab/marketplace/rest/AdminPurchaseRest.class
+ch/zhaw/securitylab/marketplace/rest/Error403Servlet.class
+ch/zhaw/securitylab/marketplace/rest/ProductRest.class
+ch/zhaw/securitylab/marketplace/rest/AuthenticationRest.class
+ch/zhaw/securitylab/marketplace/rest/AdminProductRest.class
+ch/zhaw/securitylab/marketplace/rest/Error401Servlet.class

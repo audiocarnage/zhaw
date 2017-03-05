@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <title>Marketplace</title>
+        <h:outputStylesheet library="css" name="marketplace.css" />
+    </h:head>
+    
+    <h:body>
+        <div id="header">
+            <h1>Add Product</h1>
+            <h:messages globalOnly="true" layout="table" infoClass="redItalicText" />
+        </div>
+        
+        <div id="addProductData">
+            <p>
+                <h:outputText
+                        value="Please provide the following information to add a 
+                        product:" />
+            </p>
+            <h:form>
+                <h:panelGrid columns="3">
+                    <h:outputLabel value="Code:" />
+                    <h:inputText id="code"
+                                 value="#{addProductBacking.product.code}" />
+                    <h:message for="code" errorClass="redItalicText" />
+                    <h:outputLabel value="Description:" />
+                    <h:inputText id="description"
+                                 value="#{addProductBacking.product.description}" />
+                    <h:message for="description" errorClass="redItalicText" />
+                    <h:outputLabel value="Price:" />
+                    <h:inputText id="price"
+                                 value="#{addProductBacking.product.price}" />
+                    <h:message for="price" errorClass="redItalicText" />
+                    <h:outputText value="" />
+                    <h:commandButton value="add product"
+                                     action="#{addProductBacking.addProduct()}" />
+                    <h:outputText value="" />
+                </h:panelGrid>
+            </h:form>
+        </div>
+
+        <div id="navigation">
+            <h:panelGrid columns="1">
+                <h:button value="Return to admin area" outcome="/view/admin/admin" />
+            </h:panelGrid>
+        </div>
+    </h:body>
+</html>

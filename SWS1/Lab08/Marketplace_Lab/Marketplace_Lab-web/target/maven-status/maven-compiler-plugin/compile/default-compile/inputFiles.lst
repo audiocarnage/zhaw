@@ -1,0 +1,7 @@
+/home/user/Marketplace_Lab/Marketplace_Lab-web/src/main/java/ch/zhaw/securitylab/marketplace/backing/SearchBacking.java
+/home/user/Marketplace_Lab/Marketplace_Lab-web/src/main/java/ch/zhaw/securitylab/marketplace/backing/CartBacking.java
+/home/user/Marketplace_Lab/Marketplace_Lab-web/src/main/java/ch/zhaw/securitylab/marketplace/backing/AdminPurchaseBacking.java
+/home/user/Marketplace_Lab/Marketplace_Lab-web/src/main/java/ch/zhaw/securitylab/marketplace/backing/CheckoutBacking.java
+/home/user/Marketplace_Lab/Marketplace_Lab-web/src/main/java/ch/zhaw/securitylab/marketplace/backing/AdminProductBacking.java
+/home/user/Marketplace_Lab/Marketplace_Lab-web/src/main/java/ch/zhaw/securitylab/marketplace/backing/AddProductBacking.java
+/home/user/Marketplace_Lab/Marketplace_Lab-web/src/main/java/ch/zhaw/securitylab/marketplace/backing/AuthenticationBacking.java

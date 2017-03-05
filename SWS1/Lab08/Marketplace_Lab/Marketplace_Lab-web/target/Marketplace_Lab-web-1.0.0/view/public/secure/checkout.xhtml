@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <title>Marketplace</title>
+        <h:outputStylesheet library="css" name="marketplace.css" />
+    </h:head>
+    <h:body>
+
+        <div id="header">
+            <h1>Checkout</h1>
+            <h:messages globalOnly="true" layout="table" infoClass="redItalicText" />
+        </div>
+
+        <div id="checkoutData">
+            <p>
+                <h:outputText
+                    value="Your cart is empty, so you cannot purchase anything."
+                    rendered="#{cartBacking.count == 0}" />
+                <h:outputText
+                    value="Please provide the following information to complete your
+                    purchase:"
+                    rendered="#{cartBacking.count != 0}" />
+            </p>
+            <h:form>
+                <h:panelGrid columns="3" rendered="#{cartBacking.count != 0}">
+                    <h:outputLabel value="First name:" />
+                    <h:inputText id="firstname"
+                                 value="#{checkoutBacking.purchase.firstname}" />
+                    <h:message for="firstname" errorClass="redItalicText" />
+                    <h:outputLabel value="Last name:" />
+                    <h:inputText id="lastname"
+                                 value="#{checkoutBacking.purchase.lastname}" />
+                    <h:message for="lastname" errorClass="redItalicText" />
+                    <h:outputLabel value="Credit card number:" />
+                    <h:inputText id="creditCardNumber"
+                                 value="#{checkoutBacking.purchase.creditCardNumber}" />
+                    <h:message for="creditCardNumber" errorClass="redItalicText" />
+                    <h:outputText value="" />
+                    <h:commandButton value="Complete purchase"
+                                     action="#{checkoutBacking.completePurchase()}" />
+                    <h:outputText value="" />
+                </h:panelGrid>
+            </h:form>
+        </div>
+
+        <div id="navigation">
+            <h:panelGrid columns="2">
+                <h:button value="Return to search page" outcome="/view/public/search" />
+                <h:button value="Show cart" outcome="/view/public/cart" />
+            </h:panelGrid>
+        </div>
+
+    </h:body>
+</html>

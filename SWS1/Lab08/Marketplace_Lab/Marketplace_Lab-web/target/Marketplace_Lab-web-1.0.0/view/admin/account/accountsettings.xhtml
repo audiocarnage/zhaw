@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <title>Marketplace</title>
+        <h:outputStylesheet library="css" name="marketplace.css" />
+    </h:head>
+    <h:body>
+
+        <div id="header">
+            <h1>Account settings</h1>
+            <h:messages globalOnly="true" layout="table" infoClass="redItalicText"/>
+            <p>Account settings for user #{request.getRemoteUser()}.</p>
+        </div>
+
+        <div id="navigation">
+            <h:panelGrid columns="1">
+                <h:button value="Return to admin area" outcome="/view/admin/admin" />
+            </h:panelGrid>
+        </div>
+
+    </h:body>
+</html>
+

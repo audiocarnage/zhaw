@@ -1,0 +1,7 @@
+ch/zhaw/securitylab/marketplace/backing/SearchBacking.class
+ch/zhaw/securitylab/marketplace/backing/AdminProductBacking.class
+ch/zhaw/securitylab/marketplace/backing/AdminPurchaseBacking.class
+ch/zhaw/securitylab/marketplace/backing/AddProductBacking.class
+ch/zhaw/securitylab/marketplace/backing/CheckoutBacking.class
+ch/zhaw/securitylab/marketplace/backing/CartBacking.class
+ch/zhaw/securitylab/marketplace/backing/AuthenticationBacking.class

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+    <h:head>
+        <title>Marketplace</title>
+        <h:outputStylesheet library="css" name="marketplace.css" />
+    </h:head>
+    <h:body>
+
+        <div id="header">
+            <h1>Your Shopping Cart</h1>
+            <h:messages globalOnly="true" layout="table" infoClass="redItalicText"/>
+        </div>
+
+        <div id="cartContent">
+            <p>
+                <h:outputText value="Your cart is empty."
+                              rendered="#{cartBacking.count == 0}" />
+            </p>
+            <h:dataTable value="#{cartBacking.products}" var="product"
+                         rendered="#{cartBacking.count != 0}" styleClass="list"
+                         rowClasses="odd,even" columnClasses="text,price">
+                <h:column>
+                    <f:facet name="header">Description</f:facet>
+                        <h:outputText value="#{product.description}" escape="false" />
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Price (CHF)</f:facet>
+                    <h:outputText value="#{product.price}" escape="false">
+                        <f:convertNumber pattern="#0.00" />
+                    </h:outputText>
+                </h:column>
+            </h:dataTable>
+        </div>
+        
+        <div id="navigation">
+            <h:panelGrid columns="2">
+                <h:button value="Return to search page" outcome="/view/public/search" />
+                <h:button value="Checkout"
+                          outcome="/view/public/checkout" />
+            </h:panelGrid>
+        </div>
+
+    </h:body>
+</html>
